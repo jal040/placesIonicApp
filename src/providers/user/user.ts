@@ -24,11 +24,16 @@ export class UserProvider {
   };
 
   loginUser(user){
-
+    console.log("loggin in user in service");
+    return this.http.post(this.url + '/login', user);
   };
 
-  logoutUser(user){
+  logoutUser(token) {
+    return this.http.post(this.url +'/logout' + '?access_token=' + token, {});
+  };
 
+  getUser(id, token) {
+    return this.http.get(this.url + '/' + id + '?access_token=' + token );
   };
 
 }

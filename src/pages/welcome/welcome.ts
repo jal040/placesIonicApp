@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { RegisterPage } from '../register/register';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the WelcomePage page.
@@ -24,9 +25,9 @@ export class WelcomePage {
     console.log('ionViewDidLoad WelcomePage');
   }
 
-  // goToLoginPage(){
-  //   this.navCtrl.push(LoginPage);
-  // }
+  goToLoginPage(){
+    this.navCtrl.push(LoginPage);
+  }
 
   goToRegisterPage(){
     this.navCtrl.push(RegisterPage);

@@ -6,7 +6,7 @@ import { UserProvider } from '../../providers/user/user';
 import { TabsPage } from '../tabs/tabs';
 
 /**
- * Generated class for the RegisterPage page.
+ * Generated class for the LoginPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,40 +14,32 @@ import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
-  selector: 'page-register',
-  templateUrl: 'register.html',
+  selector: 'page-login',
+  templateUrl: 'login.html',
 })
-export class RegisterPage {
+export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public _userProvider: UserProvider) {
   }
 
-  registerInfo: any = {
-    firstName: '',
-    lastName: '',
+  loginInfo: any = {
     email: '',
     password: ''
-  };
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
   }
 
-  register(){
-    console.log("Registering!!");
-    window.sessionStorage.clear();
-    this._userProvider.registerUser(this.registerInfo).subscribe(
-      (res: any) => {
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad LoginPage');
+  }
+
+  login(){
+    console.log("Logging in!!");
+    this._userProvider.loginUser(this.loginInfo).subscribe(
+      (res:any) => {
         console.log(res);
         window.sessionStorage.setItem('token', res.token);
         window.sessionStorage.setItem('userId', res.userId);
       }
-    );
-    console.log("successful register!!");
-    this.registerInfo.firstName = '';
-    this.registerInfo.lastName = '';
-    this.registerInfo.email = '';
-    this.registerInfo.password = '';
+    )
     this.navCtrl.setRoot(TabsPage);
   }
 
