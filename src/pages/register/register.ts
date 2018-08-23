@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Loading } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
 import { TabsPage } from '../tabs/tabs';
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the RegisterPage page.
@@ -19,7 +20,12 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class RegisterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public _userProvider: UserProvider) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public _userProvider: UserProvider,
+    public loadCtrl: LoadingController
+  ) {
   }
 
   registerInfo: any = {
@@ -28,6 +34,11 @@ export class RegisterPage {
     email: '',
     password: ''
   };
+
+  loading = this.loadCtrl.create({
+    content: 'Logging in...',
+    duration: 2000
+  });
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');
@@ -48,7 +59,11 @@ export class RegisterPage {
     this.registerInfo.lastName = '';
     this.registerInfo.email = '';
     this.registerInfo.password = '';
-    this.navCtrl.setRoot(TabsPage);
+    this.loading.present()
+      .then(_ => 
+        this.navCtrl.setRoot(TabsPage)
+      );
+    
   }
 
 }

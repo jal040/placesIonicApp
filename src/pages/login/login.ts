@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { UserProvider } from '../../providers/user/user';
 import { TabsPage } from '../tabs/tabs';
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,7 +20,12 @@ import { TabsPage } from '../tabs/tabs';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public _userProvider: UserProvider) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public _userProvider: UserProvider,
+    public loadCtrl: LoadingController
+  ) {
   }
 
   loginInfo: any = {
@@ -27,12 +33,29 @@ export class LoginPage {
     password: ''
   }
 
+  // presentLoadingDefault() {
+  //   let loading = this.loadCtrl.create({
+  //     content: 'Logging in...'
+  //   });
+  
+  //   loading.present();
+  
+  //   setTimeout(() => {
+  //     loading.dismiss();
+  //   }, 2000);
+  // }
+  loading = this.loadCtrl.create({
+    content: 'Logging in...',
+    duration: 2000
+  });
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
 
   login(){
     console.log("Logging in!!");
+
     this._userProvider.loginUser(this.loginInfo).subscribe(
       (res:any) => {
         console.log(res);
@@ -40,7 +63,11 @@ export class LoginPage {
         window.sessionStorage.setItem('userId', res.userId);
       }
     )
-    this.navCtrl.setRoot(TabsPage);
+    this.loading.present()
+      .then(_ =>
+        this.navCtrl.setRoot(TabsPage)
+      );
+    
   }
 
 }

@@ -12,12 +12,14 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { LoginPage } from '../pages/login/login';
 import { AccountPage } from '../pages/account/account';
 import { BookmarkedPage } from '../pages/bookmarked/bookmarked';
+import { GooglemapsComponent } from '../components/googlemaps/googlemaps';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { UserProvider } from '../providers/user/user';
 import { Geolocation } from '@ionic-native/geolocation';
+import { GoogleMaps } from '@ionic-native/google-maps';
 
 @NgModule({
   declarations: [
@@ -29,12 +31,13 @@ import { Geolocation } from '@ionic-native/geolocation';
     TabsPage,
     LoginPage,
     AccountPage,
-    BookmarkedPage
+    BookmarkedPage,
+    GooglemapsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -53,7 +56,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider,
-    Geolocation
+    Geolocation,
+    GoogleMaps
   ]
 })
 export class AppModule {}

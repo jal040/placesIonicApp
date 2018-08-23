@@ -38,25 +38,10 @@ export class HomePage {
   };
 
 
-  presentLoadingDefault() {
-    let loading = this.loadCtrl.create({
-      content: 'Logging in...'
-    });
-  
-    loading.present();
-  
-    setTimeout(() => {
-      loading.dismiss();
-    }, 2000);
-  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-  }
-
-  ionViewWillEnter(){
-    console.log('ionViewWillEnter Homepage');
-    this.presentLoadingDefault();
+    
     this._userProvider.getUser(window.sessionStorage.getItem('userId'), window.sessionStorage.getItem('token')).subscribe(
       (res:any) => {
         console.log("USER INSIDE HOME");
@@ -67,6 +52,11 @@ export class HomePage {
         this.user.id = res.id;
       }
     );
+  }
+
+  ionViewWillEnter(){
+    console.log('ionViewWillEnter Homepage');
+
   }
 
 }
