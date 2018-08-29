@@ -7,6 +7,7 @@ import { MapProvider } from '../../providers/map/map';
 import { LoadingController } from 'ionic-angular';
 import { GoogleMaps, Marker } from '@ionic-native/google-maps';
 import { Geolocation } from '@ionic-native/geolocation';
+import { DetailsPage } from '../details/details';
 
 
 /**
@@ -184,6 +185,13 @@ export class HomePage {
         });
       });
     });
+  }
+
+  selectSearchResult(searchItem){
+    console.log(searchItem);
+    this.navCtrl.push(DetailsPage, {
+      searchItem: searchItem
+    })
   }
 
 }

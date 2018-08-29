@@ -14,16 +14,28 @@
 
 
 <ion-content padding>
-    <ion-card>
-        <img src="img/nin-live.png"/>
+    <ion-card *ngIf="!search">
+        <img src="https://picsum.photos/300/300/?random"/>
         <ion-card-content>
           <ion-card-title>
             {{place.name}}
             </ion-card-title>
+          <h2>
+            Address: {{place.address}}
+          </h2>
           <p>
-            The most popular industrial group ever, and largely
-            responsible for bringing the music to a mass audience.
+            Rating: {{place.rating}}
           </p>
         </ion-card-content>
       </ion-card>
+
+      <ion-card *ngIf="search">
+          <img src="https://picsum.photos/300/300/?random"/>
+          <ion-card-content>
+            <ion-card-title>
+              {{searchItem.description}}
+              </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+
 </ion-content>
