@@ -4,6 +4,7 @@ import { IonicPage, NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { AccountPage } from '../account/account';
 import { BookmarkedPage } from '../bookmarked/bookmarked';
+import { ListPage } from '../list/list';
 
 /**
  * Generated class for the TabsPage tabs.
@@ -31,7 +32,7 @@ export class TabsPage {
   tab1Root = HomePage;
 
   //Make the rest!
-  tab2Root = BookmarkedPage;
+  tab2Root = ListPage;
 
   tab3Root = AccountPage;
 

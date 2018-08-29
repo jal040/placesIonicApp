@@ -64,9 +64,11 @@ export class LoginPage {
       }
     )
     this.loading.present()
-      .then(_ =>
+      .then(_ => {
         this.navCtrl.setRoot(TabsPage)
-      );
+      }).catch((e) => {
+        console.log('error: ', e);
+      });
     
   }
 
