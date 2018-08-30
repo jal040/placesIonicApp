@@ -21,6 +21,7 @@ import { MapProvider } from '../providers/map/map';
 import { Geolocation } from '@ionic-native/geolocation';
 import { GoogleMaps } from '@ionic-native/google-maps';
 import { DetailsPage } from '../pages/details/details';
+import { PlacesProvider } from '../providers/places/places';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { DetailsPage } from '../pages/details/details';
     UserProvider,
     Geolocation,
     GoogleMaps,
-    MapProvider
+    MapProvider,
+    PlacesProvider
   ]
 })
 export class AppModule {}

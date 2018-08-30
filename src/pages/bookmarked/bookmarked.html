@@ -14,5 +14,31 @@
 
 
 <ion-content padding>
+    <ion-list no-lines>
 
+        <ion-card *ngFor="let place of bookmarkedPlaces">
+            <img src="https://picsum.photos/300/300/?random"/>
+            <ion-card-content>
+              <ion-card-title>
+                {{place.name}}
+                </ion-card-title>
+              <h2>
+                Address: {{place.address}}
+              </h2>
+              <p>
+                Rating: {{place.rating}}
+              </p>
+            </ion-card-content>
+    
+            <ion-row no-padding>
+                <ion-col *ngIf="place.bookmarked">
+                    <button ion-button clear small color="danger" icon-start (click)="removeBookmark(place)">
+                      <ion-icon name='bookmark'></ion-icon>
+                      Remove from Bookmarks
+                    </button>
+                  </ion-col>
+            </ion-row>
+    
+          </ion-card>
+      </ion-list>
 </ion-content>

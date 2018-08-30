@@ -130,7 +130,7 @@ export class HomePage {
     service.nearbySearch({
       location: this.latLng,
       radius: 500,
-      type: ''
+      type: 'store'
     }, (results, status) => {
       this.callback(results, status);
     })
@@ -163,8 +163,6 @@ export class HomePage {
     let infowindow = new google.maps.InfoWindow();
 
     marker.addListener('click', function() {
-      console.log("inside marker");
-      console.log(place.name);
       infowindow.setContent(place.name);
       infowindow.open(this.map, marker);
     });

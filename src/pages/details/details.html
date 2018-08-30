@@ -29,12 +29,18 @@
         </ion-card-content>
 
         <ion-row no-padding>
-            <ion-col>
+            <ion-col *ngIf="!bookmarked">
               <button ion-button clear small color="danger" icon-start (click)="bookmark()">
-                <ion-icon name='bookmark'></ion-icon>
+                <ion-icon name='ios-bookmark'></ion-icon>
                 Bookmark
               </button>
             </ion-col>
+            <ion-col *ngIf="bookmarked">
+                <button ion-button clear small color="danger" icon-start (click)="removeBookmark()">
+                  <ion-icon name='bookmark'></ion-icon>
+                  Remove from Bookmarks
+                </button>
+              </ion-col>
         </ion-row>
 
       </ion-card>
