@@ -34,6 +34,8 @@ export class TabsPage {
   //Make the rest!
   tab2Root = ListPage;
 
-  tab3Root = AccountPage;
+  tab3Root = BookmarkedPage;
+
+  tab4Root = AccountPage;
 
 }

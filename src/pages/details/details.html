@@ -14,7 +14,7 @@
 
 
 <ion-content padding>
-    <ion-card *ngIf="!search">
+    <ion-card>
         <img src="https://picsum.photos/300/300/?random"/>
         <ion-card-content>
           <ion-card-title>
@@ -27,15 +27,16 @@
             Rating: {{place.rating}}
           </p>
         </ion-card-content>
-      </ion-card>
 
-      <ion-card *ngIf="search">
-          <img src="https://picsum.photos/300/300/?random"/>
-          <ion-card-content>
-            <ion-card-title>
-              {{searchItem.description}}
-              </ion-card-title>
-          </ion-card-content>
-        </ion-card>
+        <ion-row no-padding>
+            <ion-col>
+              <button ion-button clear small color="danger" icon-start (click)="bookmark()">
+                <ion-icon name='bookmark'></ion-icon>
+                Bookmark
+              </button>
+            </ion-col>
+        </ion-row>
+
+      </ion-card>
 
 </ion-content>

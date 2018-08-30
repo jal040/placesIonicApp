@@ -171,27 +171,27 @@ export class HomePage {
   }
 
 
-  updateSearchResults(){
-    if (this.autocomplete.input == '') {
-      this.autocompleteItems = [];
-      return;
-    }
-    this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
-    (predictions, status) => {
-      this.autocompleteItems = [];
-      this.zone.run(() => {
-        predictions.forEach((prediction) => {
-          this.autocompleteItems.push(prediction);
-        });
-      });
-    });
-  }
+  // updateSearchResults(){
+  //   if (this.autocomplete.input == '') {
+  //     this.autocompleteItems = [];
+  //     return;
+  //   }
+  //   this.GoogleAutocomplete.getPlacePredictions({ input: this.autocomplete.input },
+  //   (predictions, status) => {
+  //     this.autocompleteItems = [];
+  //     this.zone.run(() => {
+  //       predictions.forEach((prediction) => {
+  //         this.autocompleteItems.push(prediction);
+  //       });
+  //     });
+  //   });
+  // }
 
-  selectSearchResult(searchItem){
-    console.log(searchItem);
-    this.navCtrl.push(DetailsPage, {
-      searchItem: searchItem
-    })
-  }
+  // selectSearchResult(searchItem){
+  //   console.log(searchItem);
+  //   this.navCtrl.push(DetailsPage, {
+  //     searchItem: searchItem
+  //   })
+  // }
 
 }
